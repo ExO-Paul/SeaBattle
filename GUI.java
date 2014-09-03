@@ -31,22 +31,10 @@ public class GUI {
         restartMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    StringBuilder cmd = new StringBuilder();
-
-                    cmd.append(System.getProperty("java.home") + File.separator + "bin" + File.separator + "java ");
-                    for (String jvmArg : ManagementFactory.getRuntimeMXBean().getInputArguments()) {
-                        cmd.append(jvmArg + " ");
-                    }
-                    cmd.append("-cp ").append(ManagementFactory.getRuntimeMXBean().getClassPath()).append(" ");
-                    cmd.append(SeaBattle.class.getName()).append(" ");
-                    Runtime.getRuntime().exec(cmd.toString());
-                }
-                catch (Exception ex)
-                {}
-
-
-                System.exit(0);
+                Player player = new Player(true);
+                Player ai = new Player(false);
+                player.createField(Input.genTypeChoice());
+                ai.createField(true);
             }
         });
         gameMenu.add(restartMenuItem);
