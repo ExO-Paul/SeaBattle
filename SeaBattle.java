@@ -16,9 +16,7 @@ public class SeaBattle {
     static final int COMMON_COUNT = FOURDECK_COUNT + THREEDECK_COUNT + TWODECK_COUNT + ONEDECK_COUNT;
 
 
-
-
-    public static void main(String[] args) {
+    static void game() {
         Player player = new Player(true);                                   //Создаём нового игрока-человека
         Player ai = new Player(false);                                      //Создаём игрока - AI
         player.createField(Input.genTypeChoice());
@@ -40,8 +38,19 @@ public class SeaBattle {
             } else
                 GUI.wrongCoordinate();
         }
+    }
+
+
+
+    public static void main(String[] args) {
+
+        GUI.drawFrame();
+
+        game();
 
     }
+
+
 
 }
 

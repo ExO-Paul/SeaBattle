@@ -1,9 +1,90 @@
 package Sokolchik.Paul.SeaBattle;
 
+import com.sun.xml.internal.bind.v2.runtime.RuntimeUtil;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.lang.management.ManagementFactory;
+
 /**
  * Created by sokolchik_p on 25.08.2014.
  */
 public class GUI {
+
+    public static void drawFrame() {
+
+        JFrame frame = new JFrame("SeaBattle");
+
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        frame.setSize(dimension.width/2,dimension.height/2);
+        frame.setLocation((dimension.width-frame.getWidth())/2, (dimension.height-frame.getHeight())/2);
+
+        JMenuBar menuBar = new JMenuBar();
+
+        JMenu gameMenu = new JMenu("Game");
+
+        JMenuItem restartMenuItem = new JMenuItem("Restart");
+        restartMenuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    StringBuilder cmd = new StringBuilder();
+
+                    cmd.append(System.getProperty("java.home") + File.separator + "bin" + File.separator + "java ");
+                    for (String jvmArg : ManagementFactory.getRuntimeMXBean().getInputArguments()) {
+                        cmd.append(jvmArg + " ");
+                    }
+                    cmd.append("-cp ").append(ManagementFactory.getRuntimeMXBean().getClassPath()).append(" ");
+                    cmd.append(SeaBattle.class.getName()).append(" ");
+                    Runtime.getRuntime().exec(cmd.toString());
+                }
+                catch (Exception ex)
+                {}
+
+
+                System.exit(0);
+            }
+        });
+        gameMenu.add(restartMenuItem);
+
+        JMenuItem quitMenuItem = new JMenuItem("Quit");
+        quitMenuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            System.exit(0);
+            }
+        });
+        gameMenu.add(quitMenuItem);
+
+        menuBar.add(gameMenu);
+
+
+        JMenu helpMenu = new JMenu("Help");
+
+        JMenuItem howMenuItem = new JMenuItem("How to play");
+        howMenuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        helpMenu.add(howMenuItem);
+
+        menuBar.add(helpMenu);
+
+        frame.setJMenuBar(menuBar);
+
+
+
+
+
+        frame.setVisible(true);
+    }
+
 
     /**
      * Функция отрисовки поля.
