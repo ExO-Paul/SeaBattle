@@ -16,61 +16,7 @@ import java.lang.management.ManagementFactory;
 public class GUI {
 
     public static void drawFrame() {
-
-        JFrame frame = new JFrame("SeaBattle");
-
-        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-        frame.setSize(dimension.width/2,dimension.height/2);
-        frame.setLocation((dimension.width-frame.getWidth())/2, (dimension.height-frame.getHeight())/2);
-
-        JMenuBar menuBar = new JMenuBar();
-
-        JMenu gameMenu = new JMenu("Game");
-
-        JMenuItem restartMenuItem = new JMenuItem("Restart");
-        restartMenuItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Player player = new Player(true);
-                Player ai = new Player(false);
-                player.createField(Input.genTypeChoice());
-                ai.createField(true);
-            }
-        });
-        gameMenu.add(restartMenuItem);
-
-        JMenuItem quitMenuItem = new JMenuItem("Quit");
-        quitMenuItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            System.exit(0);
-            }
-        });
-        gameMenu.add(quitMenuItem);
-
-        menuBar.add(gameMenu);
-
-
-        JMenu helpMenu = new JMenu("Help");
-
-        JMenuItem howMenuItem = new JMenuItem("How to play");
-        howMenuItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        helpMenu.add(howMenuItem);
-
-        menuBar.add(helpMenu);
-
-        frame.setJMenuBar(menuBar);
-
-
-
-
-
-        frame.setVisible(true);
+        MainFrame frame = new MainFrame();
     }
 
 

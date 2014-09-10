@@ -1,5 +1,9 @@
 package Sokolchik.Paul.SeaBattle;
 
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.EventListener;
 import java.util.Scanner;
 
 /**
@@ -7,8 +11,12 @@ import java.util.Scanner;
  */
 public class SeaBattle {
 
+    static Player player;
+    static Player ai;
+    static ActionListener restart;
 
-    static Scanner scanner = new Scanner(System.in);
+
+
     static final int FOURDECK_COUNT = 1;
     static final int THREEDECK_COUNT = 2;
     static final int TWODECK_COUNT = 3;
@@ -17,8 +25,9 @@ public class SeaBattle {
 
 
     static void game() {
-        Player player = new Player(true);                                   //Создаём нового игрока-человека
-        Player ai = new Player(false);                                      //Создаём игрока - AI
+
+        player= new Player(true);                                   //Создаём нового игрока-человека
+        ai = new Player(false);                                      //Создаём игрока - AI
         player.createField(Input.genTypeChoice());
         ai.createField(true);                                                   //Создаём поля, содержащие корабли
 
@@ -44,6 +53,12 @@ public class SeaBattle {
 
     public static void main(String[] args) {
 
+        try{
+            Input.stdIn.mark(99999);
+        }
+        catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
         GUI.drawFrame();
 
         game();

@@ -1,7 +1,6 @@
 package Sokolchik.Paul.SeaBattle;
 
 import java.util.Random;
-import java.util.Scanner;
 
 /**
  * Created by sokolchik_p on 01.09.2014.
@@ -218,7 +217,6 @@ public class ShipManipulator {
         Ship ship = new Ship();
         ship.strength = strength;
         boolean shipSet;
-        Scanner scanner = new Scanner(System.in);
         do {
             shipSet = true;
             Coordinate nose = Input.inputNoseCoordinate(strength);

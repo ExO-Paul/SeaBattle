@@ -1,6 +1,5 @@
 package Sokolchik.Paul.SeaBattle;
 
-import java.util.Scanner;
 import java.util.Random;
 
 /**
@@ -8,7 +7,6 @@ import java.util.Random;
  */
 public class Player {
 
-    static Scanner scanner = new Scanner(System.in);
     private boolean isHuman;                            //Является ли игрок человеком
     int enemyDeadShipsCount = 0;                          //Счётчик потопленных кораблей противника
     private boolean nearEnemyShip = false;                //Флаг того, "нащупал" ли AI корабль

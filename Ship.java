@@ -1,8 +1,4 @@
 package Sokolchik.Paul.SeaBattle;
-
-import java.util.Random;
-import java.util.Scanner;
-
 /**
  * Класс, представляющий отдельно взятый корабль
  */

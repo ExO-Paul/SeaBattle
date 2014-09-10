@@ -1,5 +1,8 @@
 package Sokolchik.Paul.SeaBattle;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 /**
@@ -7,7 +10,9 @@ import java.util.Scanner;
  */
 public class Input {
 
-    static Scanner scanner = new Scanner(System.in);
+    static BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+
+    static Scanner scanner = new Scanner(stdIn);
 
     static boolean genTypeChoice() {
         int choice = 0;
@@ -18,7 +23,7 @@ public class Input {
                 choice = scanner.nextInt();
             } catch (Exception ex) {
                 System.out.println("Sorry, sir, I haven't heard you well");
-                scanner = new Scanner(System.in);
+                scanner.next();
             }
         } while (choice != 1 && choice != 2);
 
@@ -40,7 +45,7 @@ public class Input {
             System.out.println("Please,enter Y coordinate of the nose of your " + strength + "-deck ship: ");
             coordinate.y = scanner.nextInt();
         } catch (Exception ex) {
-            scanner = new Scanner(System.in);
+            scanner.next();
         }
         return coordinate;
     }
@@ -53,7 +58,7 @@ public class Input {
                 direction = Ship.Direction.valueOf(scanner.next());
             } catch (Exception ex) {
                     /*directionSet = false;*/
-                scanner = new Scanner(System.in);
+                scanner.next();
             }
         } while (direction== Ship.Direction.Undefined);
 
@@ -70,7 +75,7 @@ public class Input {
         } catch (java.util.InputMismatchException ex) {                   //Обработка исключения ввода
             coordinate.x = 10;
             coordinate.y = 10;
-            scanner = new Scanner(System.in);
+            scanner.next();
         }
         return coordinate;
     }
