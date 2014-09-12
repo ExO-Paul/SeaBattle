@@ -1,5 +1,9 @@
 package Sokolchik.Paul.SeaBattle;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -10,11 +14,13 @@ import java.util.Scanner;
  */
 public class Input {
 
+    static boolean isAuto;
+
     static BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
 
     static Scanner scanner = new Scanner(stdIn);
 
-    static boolean genTypeChoice() {
+    /*static boolean genTypeChoice() {
         int choice = 0;
         boolean isAuto;
         do {
@@ -35,7 +41,46 @@ public class Input {
         else
             isAuto = false;
         return isAuto;
+    }*/
+
+
+    static boolean genTypeChoice() {
+        final JDialog generationDialog = new JDialog();
+
+        JLabel genQuestionLabel = new JLabel("Who do you want to set up your ships?");
+
+        generationDialog.setLayout(new GridLayout());
+
+        generationDialog.add(genQuestionLabel);
+
+        JButton aideButton = new JButton("Your aide");
+
+        aideButton.addActionListener( new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Input.isAuto = true;
+            }
+        });
+
+        generationDialog.add(aideButton);
+
+        JButton youButton = new JButton("You");
+
+        youButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Input.isAuto = false;
+            }
+        });
+
+        generationDialog.add(youButton);
+
+        generationDialog.setVisible(true);
+
+        return true;
+        //return Input.isAuto;
     }
+
 
     static Coordinate inputNoseCoordinate(int strength){
         Coordinate coordinate = new Coordinate();
@@ -82,7 +127,8 @@ public class Input {
 
     static String usernameEnter() {
         System.out.print("Please, enter your name: ");
-        String username = scanner.nextLine();
+        //String username = scanner.nextLine();                         //ИСПРАВИТЬ!!!
+        String username = "111";
         System.out.print("\nWelcome, " + username + "! We're glad you're with us here\n\n");
         return username;
     }

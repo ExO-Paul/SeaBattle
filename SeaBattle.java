@@ -16,7 +16,6 @@ public class SeaBattle {
     static ActionListener restart;
 
 
-
     static final int FOURDECK_COUNT = 1;
     static final int THREEDECK_COUNT = 2;
     static final int TWODECK_COUNT = 3;
@@ -53,15 +52,12 @@ public class SeaBattle {
 
     public static void main(String[] args) {
 
-        try{
-            Input.stdIn.mark(99999);
-        }
-        catch (Exception ex){
-            System.out.println(ex.getMessage());
-        }
         GUI.drawFrame();
 
-        game();
+
+
+
+        //game();
 
     }
 
