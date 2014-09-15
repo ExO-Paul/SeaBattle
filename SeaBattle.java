@@ -54,15 +54,6 @@ public class SeaBattle {
 
         GUI.drawFrame();
 
-
-
-
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
-        //game();
-
     }
 
 
