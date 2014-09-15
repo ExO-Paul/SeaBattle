@@ -24,7 +24,12 @@ public class MouseShootAdapter implements MouseListener{
         int xIndex = (int)Math.ceil(e.getX()/field.cellSize);
         int yIndex = (int)Math.ceil(e.getY()/field.cellSize);
 
-        GUI.winner(true, player.username, gamePanel.getParent());
+        if (player.playerShoot(xIndex, yIndex, ai)) {
+            GUI.winner(true, player.username, gamePanel.getParent());
+        }
+        if (ai.aiShoot(player)) {
+            GUI.winner(false, player.username, gamePanel.getParent());
+        }
 
         gamePanel.repaint();
 

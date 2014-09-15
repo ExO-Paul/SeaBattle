@@ -199,7 +199,7 @@ public class Player {
                 nearEnemyShip = true;
                 lastX = x;
                 lastY = y;
-                enemyDeadShipsCount++;
+
 
                 lastDirection = direction;
 
@@ -211,6 +211,7 @@ public class Player {
                 if (ship.isDead) {
                     ShipManipulator.setSunk(player.getField(), ship);
                     nearEnemyShip = false;
+                    enemyDeadShipsCount++;
                 }
             }
         }

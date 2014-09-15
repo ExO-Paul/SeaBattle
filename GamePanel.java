@@ -20,7 +20,7 @@ public class GamePanel extends JPanel {
         ai = new Player(false);                                         //Создаём игрока - AI
         //GenerationTypeDialog choiceFrame = new GenerationTypeDialog(this);
 
-        JOptionPane.showInternalOptionDialog(this, "")
+
 
 
         player.createField(isAuto);

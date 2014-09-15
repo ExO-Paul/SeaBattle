@@ -35,6 +35,7 @@ public class SeaBattle {
         {
             Coordinate coordinate = Input.inputShotCoordinate();
             if (Field.inRange(coordinate.x, coordinate.y) && !player.getMap().getCell(coordinate.x, coordinate.y).wasShot) {      //Если введённые координаты действительно принадлежат полю и на карте игрока нет отметок в этом месте(т.е. туда не велась стрельба)
+
                 if (player.playerShoot(coordinate.x, coordinate.y, ai)) {   //Игрок стреляет, одновременно производится проверка победил он или нет
                     GUI.winner(true, player.username, null);                          //Если победил - выводим сообщение о победе с указанием имени игрока
                     break;
