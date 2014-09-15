@@ -47,12 +47,44 @@ public class GUI {
         }
     }
 
+<<<<<<< HEAD
     static void winner(boolean win, String username, Container frame) {
         if (win)
             JOptionPane.showMessageDialog(frame,"You won, Admiral " + username + "!");
         else
             JOptionPane.showMessageDialog(frame,"Such a misfortune, " + username + " =(");
         //WinnerMessageFrame frame = new WinnerMessageFrame (win, username);
+=======
+    static void winner(boolean win, String username) {
+        if (win){
+            JFrame message= new JFrame("Winner");
+            message.setSize(300, 200);
+            message.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+            message.setLocation((dimension.width - message.getWidth()) / 2, (dimension.height - message.getHeight()) / 2);
+
+            JLabel label= new JLabel("You won, Admiral " + username + "!");
+            message.add(label, BorderLayout.CENTER);
+
+            message.setVisible(true);
+            System.out.print("You won, Admiral " + username + "!");
+        }
+        else {
+            JFrame message= new JFrame("Winner");
+            message.setSize(300, 200);
+            message.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+            message.setLocation((dimension.width - message.getWidth()) / 2, (dimension.height - message.getHeight()) / 2);
+
+            JLabel label= new JLabel("Such a misfortune, " + username + " =(");
+            message.add(label, BorderLayout.CENTER);
+
+            message.setVisible(true);
+
+            System.out.print("Such a misfortune, " + username + " =(");
+        }
+
+>>>>>>> origin/master
     }
 
     static void wrongCoordinate(){

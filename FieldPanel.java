@@ -20,6 +20,10 @@ public class FieldPanel extends JPanel {
         this.setSize(size);
         this.setOpaque(true);
         this.setBackground(new Color(166, 180, 255));
+<<<<<<< HEAD
+=======
+        this.addMouseListener(new MouseAdapter(gamePanel ,this, player, ai));
+>>>>>>> origin/master
         this.field = field;
         this.player = player;
         this.ai = ai;

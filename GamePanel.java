@@ -2,6 +2,7 @@ package Sokolchik.Paul.SeaBattle;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.datatransfer.DataFlavor;
 
 /**
  * Created by sokolchik_p on 10.09.2014.
@@ -9,7 +10,10 @@ import java.awt.*;
 public class GamePanel extends JPanel {
 
     Player player, ai;
+<<<<<<< HEAD
     public boolean isAuto = true;
+=======
+>>>>>>> origin/master
 
     public GamePanel(){
 
@@ -18,23 +22,32 @@ public class GamePanel extends JPanel {
 
         player= new Player(true);                                       //Создаём нового игрока-человека
         ai = new Player(false);                                         //Создаём игрока - AI
+<<<<<<< HEAD
         //GenerationTypeDialog choiceFrame = new GenerationTypeDialog(this);
 
         JOptionPane.showInternalOptionDialog(this, "")
 
 
         player.createField(isAuto);
+=======
+        player.createField(/*Input.genTypeChoice()*/true);                      //СДЕЛАТЬ ФОРМУ ЗАПРОСА
+>>>>>>> origin/master
         ai.createField(true);
 
         FieldPanel field = new FieldPanel(this.getMinimumSize(), this, player.getField(), player, ai);
 
         field.setBackground(new Color(52, 92, 130));
+<<<<<<< HEAD
 
         field.addMouseListener(new MouseShipPlaceAdapter(this, field, player));
 
         FieldPanel map = new FieldPanel(this.getMinimumSize(),this, player.getMap(), player, ai);
 
         map.addMouseListener(new MouseShootAdapter(this, map, player, ai));
+=======
+
+        FieldPanel map = new FieldPanel(this.getMinimumSize(),this, player.getMap(), player, ai);
+>>>>>>> origin/master
 
         this.setLayout(new GridLayout());
         //new BoxLayout(this, BoxLayout.X_AXIS);

@@ -57,7 +57,10 @@ public class SeaBattle {
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
         //game();
 
     }
