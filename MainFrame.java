@@ -11,9 +11,14 @@ import java.io.IOException;
  */
 public class MainFrame extends JFrame {
 
+    GamePanel gamePanel;
+    MainFrame thisFrame;
+
     public MainFrame (){
 
         super("SeaBattle");
+
+        thisFrame = this;
 
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         this.setSize(dimension.width / 2, dimension.height / 2);
@@ -24,28 +29,25 @@ public class MainFrame extends JFrame {
 
         JMenu gameMenu = new JMenu("Game");
 
-        JMenuItem startMenuItem = new JMenuItem("Start");
+        /*JMenuItem startMenuItem = new JMenuItem("Start");
         startMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SeaBattle.game();
+                gamePanel = new GamePanel();
+                thisFrame.add(gamePanel, BorderLayout.CENTER);
+
             }
         });
-        gameMenu.add(startMenuItem);
+        gameMenu.add(startMenuItem);*/
 
 
         JMenuItem restartMenuItem = new JMenuItem("Restart");
         restartMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    Input.stdIn.reset();
-                } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
-                }
-                /*SeaBattle.game();*/
-                SeaBattle.main(null);
-
+                MainFrame oldFrame = thisFrame;
+                thisFrame = new MainFrame();
+                oldFrame.dispose();
             }
         });
         gameMenu.add(restartMenuItem);
@@ -78,11 +80,8 @@ public class MainFrame extends JFrame {
         /*this.setLayout( new BorderLayout());*/
 
         this.add(menuBar, BorderLayout.NORTH);
-
-        GamePanel gamePanel = new GamePanel();
-
+        gamePanel = new GamePanel();
         this.add(gamePanel, BorderLayout.CENTER);
-
         /*FieldPanel field = new FieldPanel(this.getHeight()*2/3);
         this.add(field, BorderLayout.CENTER);*/
 

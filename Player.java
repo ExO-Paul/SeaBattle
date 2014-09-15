@@ -54,7 +54,7 @@ public class Player {
         }
     }
 
-    //REWISE THIS!!!!!!!!!
+
 
     /**
      * Метод описывает логику проверки результатов выстрела игрока. Принимает в качестве аргументов координаты выстрела
@@ -72,7 +72,7 @@ public class Player {
 
     public boolean playerShoot(int x, int y, Player ai) {
         Ship[] ships = ai.getField().getShips();
-        int deadCount = 0;
+
         map.shootCell(x, y);
 
 
@@ -81,7 +81,7 @@ public class Player {
                 map.getCell(x, y).occupied = true;
                 GUI.gotHim();
                 if (ship.isDead) {
-                    deadCount++;
+                    enemyDeadShipsCount++;
                     ShipManipulator.setSunk(map, ship);
                 }
             }
@@ -90,13 +90,13 @@ public class Player {
         System.out.println("\nOur map:");       //Not needed for graphic version!!!
         GUI.showMap(map);
 
-        if (deadCount == SeaBattle.COMMON_COUNT)
+        if (enemyDeadShipsCount == SeaBattle.COMMON_COUNT)
             return true;
         else
             return false;
     }
 
-    //REWISE THIS!!!!!!!!!
+
 
     /**
      * Метод описывает логику выстрела AI. Принимает в качестве аргумента профиль игрока, по которому производился выстрел.
@@ -129,7 +129,6 @@ public class Player {
     public boolean aiShoot(Player player) {
         Ship[] ships = player.getField().getShips();
         Random random = new Random();
-        int deadCount = 0;
         int x, y;
         Ship.Direction direction = null;
 
@@ -200,6 +199,7 @@ public class Player {
                 nearEnemyShip = true;
                 lastX = x;
                 lastY = y;
+                enemyDeadShipsCount++;
 
                 lastDirection = direction;
 
@@ -218,7 +218,7 @@ public class Player {
         System.out.println("\nField report:");      //Not needed for graphic version!!!
         GUI.showMap(player.getField());
 
-        if (deadCount == SeaBattle.COMMON_COUNT)
+        if (enemyDeadShipsCount == SeaBattle.COMMON_COUNT)
             return true;
         else
             return false;

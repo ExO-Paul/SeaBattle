@@ -47,11 +47,12 @@ public class GUI {
         }
     }
 
-    static void winner(boolean win, String username) {
+    static void winner(boolean win, String username, Container frame) {
         if (win)
-            System.out.print("You won, Admiral " + username + "!");
+            JOptionPane.showMessageDialog(frame,"You won, Admiral " + username + "!");
         else
-            System.out.print("Such a misfortune, " + username + " =(");
+            JOptionPane.showMessageDialog(frame,"Such a misfortune, " + username + " =(");
+        //WinnerMessageFrame frame = new WinnerMessageFrame (win, username);
     }
 
     static void wrongCoordinate(){

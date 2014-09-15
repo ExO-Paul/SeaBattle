@@ -16,7 +16,6 @@ public class SeaBattle {
     static ActionListener restart;
 
 
-
     static final int FOURDECK_COUNT = 1;
     static final int THREEDECK_COUNT = 2;
     static final int TWODECK_COUNT = 3;
@@ -37,11 +36,11 @@ public class SeaBattle {
             Coordinate coordinate = Input.inputShotCoordinate();
             if (Field.inRange(coordinate.x, coordinate.y) && !player.getMap().getCell(coordinate.x, coordinate.y).wasShot) {      //Если введённые координаты действительно принадлежат полю и на карте игрока нет отметок в этом месте(т.е. туда не велась стрельба)
                 if (player.playerShoot(coordinate.x, coordinate.y, ai)) {   //Игрок стреляет, одновременно производится проверка победил он или нет
-                    GUI.winner(true, player.username);                          //Если победил - выводим сообщение о победе с указанием имени игрока
+                    GUI.winner(true, player.username, null);                          //Если победил - выводим сообщение о победе с указанием имени игрока
                     break;
                 }
                 if (ai.aiShoot(player)) {                                   //Аналогично с компьютером, но сообщение - о проигрыше с именем игрока
-                    GUI.winner(false, player.username);
+                    GUI.winner(false, player.username, null);
                     break;
                 }
             } else
@@ -53,15 +52,13 @@ public class SeaBattle {
 
     public static void main(String[] args) {
 
-        try{
-            Input.stdIn.mark(99999);
-        }
-        catch (Exception ex){
-            System.out.println(ex.getMessage());
-        }
         GUI.drawFrame();
 
-        game();
+
+
+
+
+        //game();
 
     }
 
