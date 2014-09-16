@@ -59,6 +59,8 @@ public class Field {
                 matrix[i][j].wasShot = false;
     }
 
+
+
 }
 
 

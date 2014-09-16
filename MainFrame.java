@@ -19,6 +19,7 @@ public class MainFrame extends JFrame {
         super("SeaBattle");
 
         thisFrame = this;
+        this.repaint(1);
 
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         this.setSize(dimension.width / 2, dimension.height / 2);
@@ -29,16 +30,17 @@ public class MainFrame extends JFrame {
 
         JMenu gameMenu = new JMenu("Game");
 
-        /*JMenuItem startMenuItem = new JMenuItem("Start");
+        JMenuItem startMenuItem = new JMenuItem("Start");
         startMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 gamePanel = new GamePanel();
                 thisFrame.add(gamePanel, BorderLayout.CENTER);
-
+                thisFrame.setVisible(true);
             }
         });
-        gameMenu.add(startMenuItem);*/
+
+        gameMenu.add(startMenuItem);
 
 
         JMenuItem restartMenuItem = new JMenuItem("Restart");
@@ -80,10 +82,7 @@ public class MainFrame extends JFrame {
         /*this.setLayout( new BorderLayout());*/
 
         this.add(menuBar, BorderLayout.NORTH);
-        gamePanel = new GamePanel();
-        this.add(gamePanel, BorderLayout.CENTER);
-        /*FieldPanel field = new FieldPanel(this.getHeight()*2/3);
-        this.add(field, BorderLayout.CENTER);*/
+
 
         this.setVisible(true);
 

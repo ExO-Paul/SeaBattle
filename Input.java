@@ -126,10 +126,9 @@ public class Input {
     }
 
     static String usernameEnter() {
-        System.out.print("Please, enter your name: ");
-        //String username = scanner.nextLine();                         //ИСПРАВИТЬ!!!
-        String username = "111";
-        System.out.print("\nWelcome, " + username + "! We're glad you're with us here\n\n");
+        //System.out.print("Please, enter your name: ");
+        String username = JOptionPane.showInputDialog("Please, introduce yourself", "Stranger");
+        //System.out.print("\nWelcome, " + username + "! We're glad you're with us here\n\n");
         return username;
     }
 }

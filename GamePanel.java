@@ -18,12 +18,15 @@ public class GamePanel extends JPanel {
 
         player= new Player(true);                                       //Создаём нового игрока-человека
         ai = new Player(false);                                         //Создаём игрока - AI
-        //GenerationTypeDialog choiceFrame = new GenerationTypeDialog(this);
 
-
+        Object[] options = {"Your aide", "You"};
+        if (JOptionPane.showOptionDialog(this.getParent(), "Who should place your ships?", "Please, choose",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0] )==1)
+            isAuto = false;
 
 
         player.createField(isAuto);
+
         ai.createField(true);
 
         FieldPanel field = new FieldPanel(this.getMinimumSize(), this, player.getField(), player, ai);
@@ -42,6 +45,5 @@ public class GamePanel extends JPanel {
         //new BoxLayout(this, BoxLayout.X_AXIS);
         this.add(field);
         this.add(map);
-
     }
 }
