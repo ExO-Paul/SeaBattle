@@ -25,7 +25,7 @@ public class SeaBattle {
 
     static void game() {
 
-        player= new Player(true);                                   //Создаём нового игрока-человека
+        player = new Player(true);                                   //Создаём нового игрока-человека
         ai = new Player(false);                                      //Создаём игрока - AI
         player.createField(Input.genTypeChoice());
         ai.createField(true);                                                   //Создаём поля, содержащие корабли
@@ -50,13 +50,11 @@ public class SeaBattle {
     }
 
 
-
     public static void main(String[] args) {
 
         GUI.drawFrame();
 
     }
-
 
 
 }

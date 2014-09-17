@@ -1,4 +1,5 @@
 package Sokolchik.Paul.SeaBattle;
+
 /**
  * Класс, представляющий отдельно взятый корабль
  */

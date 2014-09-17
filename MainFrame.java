@@ -14,7 +14,7 @@ public class MainFrame extends JFrame {
     GamePanel gamePanel;
     MainFrame thisFrame;
 
-    public MainFrame (){
+    public MainFrame() {
 
         super("SeaBattle");
 

@@ -55,7 +55,7 @@ public class Input {
 
         JButton aideButton = new JButton("Your aide");
 
-        aideButton.addActionListener( new ActionListener() {
+        aideButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Input.isAuto = true;
@@ -82,7 +82,7 @@ public class Input {
     }
 
 
-    static Coordinate inputNoseCoordinate(int strength){
+    static Coordinate inputNoseCoordinate(int strength) {
         Coordinate coordinate = new Coordinate();
         try {
             System.out.println("Please,enter X coordinate of the nose of your " + strength + "-deck ship: ");
@@ -95,7 +95,7 @@ public class Input {
         return coordinate;
     }
 
-    static Ship.Direction inputShipDirection(){
+    static Ship.Direction inputShipDirection() {
         Ship.Direction direction = Ship.Direction.Undefined;
         do {
             try {
@@ -105,7 +105,7 @@ public class Input {
                     /*directionSet = false;*/
                 scanner.next();
             }
-        } while (direction== Ship.Direction.Undefined);
+        } while (direction == Ship.Direction.Undefined);
 
         return direction;
     }

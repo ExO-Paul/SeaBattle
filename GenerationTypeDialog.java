@@ -11,10 +11,9 @@ import java.awt.event.ActionListener;
 public class GenerationTypeDialog {
 
 
+    public GenerationTypeDialog(final GamePanel gamePanel) {
 
-    public GenerationTypeDialog(final GamePanel gamePanel){
-
-        final JDialog message= new JDialog();
+        final JDialog message = new JDialog();
         message.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         message.setLocation((dimension.width - message.getWidth()) / 2, (dimension.height - message.getHeight()) / 2);
@@ -22,7 +21,7 @@ public class GenerationTypeDialog {
 
         JButton youBtn = new JButton("You");
 
-        youBtn.addActionListener( new ActionListener() {
+        youBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 gamePanel.isAuto = false;
@@ -32,7 +31,7 @@ public class GenerationTypeDialog {
 
         JButton aideBtn = new JButton("Your aide");
 
-        aideBtn.addActionListener( new ActionListener() {
+        aideBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 gamePanel.isAuto = true;

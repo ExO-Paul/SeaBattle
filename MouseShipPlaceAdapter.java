@@ -6,7 +6,7 @@ import java.awt.event.MouseListener;
 /**
  * Created by sokolchik_p on 11.09.2014.
  */
-public class MouseShipPlaceAdapter implements MouseListener{
+public class MouseShipPlaceAdapter implements MouseListener {
 
     FieldPanel field;
     GamePanel gamePanel;
@@ -14,49 +14,84 @@ public class MouseShipPlaceAdapter implements MouseListener{
     boolean shipRotating;
     Ship newShip;
     int strength;
+    int shipsCounter;
 
-    public MouseShipPlaceAdapter(GamePanel gamePanel, FieldPanel field, Player player){
+    public MouseShipPlaceAdapter(GamePanel gamePanel, FieldPanel field, Player player) {
         this.gamePanel = gamePanel;
-        this.field=field;
+        this.field = field;
         this.player = player;
         strength = 4;
+        shipsCounter = 0;
 
     }
 
-    public void mouseClicked(MouseEvent e){
-
-            int xIndex = (int) Math.ceil(e.getX() / field.cellSize);
-            int yIndex = (int) Math.ceil(e.getY() / field.cellSize);
+    public void mouseClicked(MouseEvent e) {
+        int yIndex = (int) Math.ceil(e.getX() / field.cellSize);    //swapped coordinates
+        int xIndex = (int) Math.ceil(e.getY() / field.cellSize);
+        if (!player.getField().getCell(xIndex, yIndex).wasShot || !player.getField().getCell(xIndex, yIndex).occupied)
             if (!shipRotating) {
                 newShip = new Ship();
                 newShip.beginning.x = xIndex;
                 newShip.beginning.y = yIndex;
+                player.getField().getCell(yIndex, xIndex).wasMarked = true;
                 shipRotating = true;
-            }
-            else{
-                if (xIndex==newShip.beginning.x)
-                    if (yIndex>newShip.beginning.y){
+            } else {
+
+                if (xIndex == newShip.beginning.x) {
+                    if (yIndex == newShip.beginning.y)
+                        return;
+                    if (yIndex > newShip.beginning.y) {
                         newShip.end.x = newShip.beginning.x;
                         newShip.end.y = newShip.beginning.y + (strength - 1);
                     }
+                    if (yIndex < newShip.beginning.y) {
+                        newShip.end.x = newShip.beginning.x;
+                        newShip.end.y = newShip.beginning.y - (strength - 1);
+                    }
+                } else if (yIndex == newShip.beginning.y) {
+                    if (xIndex > newShip.beginning.x) {
+                        newShip.end.y = newShip.beginning.y;
+                        newShip.end.x = newShip.beginning.x + (strength - 1);
+                    }
+                    if (xIndex < newShip.beginning.x) {
+                        newShip.end.y = newShip.beginning.y;
+                        newShip.end.x = newShip.beginning.x - (strength - 1);
+                    }
+                } else return;
+                if (ShipManipulator.clearCheck(player.getField(), newShip)) {
+                    if (shipsCounter == 9) {
+                        gamePanel.settingShips = false;
+                        System.out.println("Everything's ready");
+                    } else if (shipsCounter == 0 || shipsCounter == 2 || shipsCounter == 5)
+                        strength--;
+
+                    ShipManipulator.setShip(player.getField(), newShip);
+                    player.getField().getShips()[shipsCounter] = newShip;
+                    if (shipsCounter == 9) {
+                        player.getField().setFieldReady();
+                    }
+                    shipsCounter++;
+                    shipRotating = false;
 
 
+                    System.out.println("one ready");
+                }
 
-                strength--;                         //TODO Нужно с этим что-то делать
-                shipRotating = false;
             }
-
-            gamePanel.repaint();
-
+        field.repaint();
     }
 
-    public void mousePressed(MouseEvent e){}
+    public void mousePressed(MouseEvent e) {
+    }
 
-    public void mouseReleased(MouseEvent e){}
+    public void mouseReleased(MouseEvent e) {
+    }
 
-    public void mouseEntered(MouseEvent e){}
+    public void mouseEntered(MouseEvent e) {
+    }
 
-    public void mouseExited(MouseEvent e){}
+    public void mouseExited(MouseEvent e) {
+    }
 
 
 }

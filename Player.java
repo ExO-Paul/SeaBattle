@@ -37,7 +37,6 @@ public class Player {
     }
 
 
-
     /**
      * Метод описывает процесс расстановки кораблей. Игрок по окончании процесса получает сообщение и видит свои корабли.
      */
@@ -45,7 +44,7 @@ public class Player {
     public void createField(boolean isAuto) {
         if (isHuman) {
             this.field = new Field();
-            ShipManipulator.createShips(field, isAuto);
+            //ShipManipulator.createShips(field, isAuto);       //TODO may be deleted if works
             GUI.shipsReady();
             field.setFieldReady();                      //Стираем лишние символы промаха с поля игрока (чтобы было удобнее отображать промахи компьютера)
             GUI.showMap(field);
@@ -53,7 +52,6 @@ public class Player {
             ShipManipulator.createShips(field, true);
         }
     }
-
 
 
     /**
@@ -95,7 +93,6 @@ public class Player {
         else
             return false;
     }
-
 
 
     /**

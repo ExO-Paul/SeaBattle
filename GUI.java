@@ -50,30 +50,30 @@ public class GUI {
 
     static void winner(boolean win, String username, Container frame) {
         if (win)
-            JOptionPane.showMessageDialog(frame,"You won, Admiral " + username + "!");
+            JOptionPane.showMessageDialog(frame, "You won, Admiral " + username + "!");
         else
-            JOptionPane.showMessageDialog(frame,"Such a misfortune, " + username + " =(");
+            JOptionPane.showMessageDialog(frame, "Such a misfortune, " + username + " =(");
         //WinnerMessageFrame frame = new WinnerMessageFrame (win, username);
 
     }
 
-    static void wrongCoordinate(){
+    static void wrongCoordinate() {
         System.out.println("Would you kindly set valid coordinates, sir?");
     }
 
-    static void gotHim(){
+    static void gotHim() {
         System.out.println("You got him!");
     }
 
-    static void shipsReady(){
+    static void shipsReady() {
         System.out.println("Your ships are ready");
     }
 
-    static void wrongPosition(){
+    static void wrongPosition() {
         System.out.println("Please, repeat enter");
     }
 
-    static void shipSunk(){
+    static void shipSunk() {
         System.out.println("The ship is sunk");
     }
 
